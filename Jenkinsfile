@@ -8,6 +8,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+		    triggers {
+		pollSCM '*/2 * * * *'
+	}
                 // Get some code from a GitHub repository
                 git credentialsId: 'github', url: 'git@github.com:nishak01/jenkins_test.git'
                 // Run Maven on a Unix agent..
